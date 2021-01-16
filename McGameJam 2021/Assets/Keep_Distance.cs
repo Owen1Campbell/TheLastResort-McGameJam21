@@ -21,7 +21,7 @@ public class Keep_Distance : MonoBehaviour
     {
         if(entityBase != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetObject.transform.position, );
+            //transform.position = Vector2.MoveTowards(transform.position, targetObject.transform.position, );
         }
     }
 }
