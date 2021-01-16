@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Fundamental : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     // Fundamentals for Coding and Operation.
     private Rigidbody2D projectileBody2D;
@@ -20,7 +21,7 @@ public class Player_Fundamental : MonoBehaviour
     // Initialization.
     void Start()
     {
-        // Get Components
+        // Get Component(s).
         projectileBody2D = GetComponent<Rigidbody2D>();
 
         // Invoke self-destruct after a particular time if time is set.
@@ -38,13 +39,20 @@ public class Player_Fundamental : MonoBehaviour
 
     private void FixedUpdate()
     {
-        projectileBody2D.MovePosition(projectileBody2D.position + moveDirection * Time.fixedDeltaTime);
+        float finalSpeed = movementSpeed * movementMultiplier;
+        projectileBody2D.MovePosition(projectileBody2D.position + moveDirection * finalSpeed * Time.fixedDeltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Inflict damage to the recipient if they can feel pain.
-        // TODO
+        Entity_Fundamental otherEntity = other.gameObject.GetComponent<Entity_Fundamental>();
+        if (otherEntity != null)
+        {
+            Debug.Log("Hit!  Entity hit had " + otherEntity.currentHealth + " health!");
+            otherEntity.currentHealth = Math.Max(0, otherEntity.currentHealth - (int) (baseDamage * damageMultiplier));
+            Debug.Log("Now entity has " + otherEntity.currentHealth + " health!");
+        }
 
         // Self destruct after the projectile hits anything.
         SelfDestruct();

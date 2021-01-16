@@ -271,9 +271,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0012059957, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.08152057
 --- !u!212 &1218984679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -388,6 +388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa7e91e898a24d4c888a494c4f79109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 1
+  baseDamage: 5
+  projectileDuration: 5
+  moveDirection: {x: 1, y: 0}
+  movementMultiplier: 1
+  damageMultiplier: 2
 --- !u!50 &1432695807
 Rigidbody2D:
   serializedVersion: 4
@@ -403,7 +409,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -419,10 +425,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0006263107, y: -0.0006264597}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -433,7 +439,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.13131553, y: 0.13132179}
   m_EdgeRadius: 0
 --- !u!212 &1432695809
 SpriteRenderer:
@@ -494,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 1432695805}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.48635834, y: 0.013169362, z: -0.36027837}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
