@@ -21,8 +21,10 @@ public class BoonManager : MonoBehaviour
         }
     }
 
-    public Boon[] boonList = new Boon[4];   // array to store boons
+    public Boon[] boonList = new Boon[8];   // array to store boons
     public int boonListPos;                 // position in boon list. should be the same as the room the player is in
+    public int chosen;                      // add for positives, subtract for negatives. if it ends positive, lady luck, negative miss fortune
+                                            // if necessary, coin flip at 0
 
     void Awake()
     {

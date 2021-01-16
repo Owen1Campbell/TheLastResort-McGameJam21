@@ -9,20 +9,14 @@ public class BoonGenerator : MonoBehaviour
 
     private System.Random randm = new System.Random();
 
-    private int posRand, negRand;
-
     private GameObject panel;
 
     private Text posText, negText;
 
     void OnEnable()
     {
-        posRand = randm.Next(1, 7);
-        negRand = randm.Next(1, 7);
-        Debug.Log(posRand);
-        Debug.Log(negRand);
-        posBoon = Generate(posRand, true);
-        negBoon = Generate(negRand, false);
+        posBoon = Generate(true);
+        negBoon = Generate(false);
 
         panel = transform.gameObject;
         posText = panel.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>();
@@ -31,9 +25,11 @@ public class BoonGenerator : MonoBehaviour
         negText.text = negBoon.message;
     }
 
-    Boon Generate(int type, bool posneg)
+    Boon Generate(bool posneg)
     {
         Boon boon = new Boon();
+        int type = randm.Next(1, 7);
+        Debug.Log(type);
         string incdec, plainTextMod;
         boon.luck = posneg;
 
@@ -155,5 +151,26 @@ public class BoonGenerator : MonoBehaviour
         }
 
         return boon;
+    }
+
+    void posButton()
+    {
+        StashAndGrab(posBoon);
+    }
+
+    void negButton()
+    {
+        StashAndGrab(negBoon);
+    }
+
+    void StashAndGrab(Boon buttonBoon)
+    {
+        BoonManager.Instance.boonList[BoonManager.Instance.boonListPos] = buttonBoon;
+        BoonManager.Instance.boonListPos++;
+
+        Boon newBoon = Generate(!buttonBoon.luck);
+
+        BoonManager.Instance.boonList[BoonManager.Instance.boonListPos] = newBoon;
+        BoonManager.Instance.boonListPos++;
     }
 }
