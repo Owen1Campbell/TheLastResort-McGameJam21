@@ -25,6 +25,7 @@ public class BoonManager : MonoBehaviour
     public int boonListPos;                 // position in boon list. should be the same as the room the player is in
     public int chosen;                      // add for positives, subtract for negatives. if it ends positive, lady luck, negative miss fortune
                                             // if necessary, coin flip at 0
+    public bool hasBoons;                   // just in case
 
     void Awake()
     {
