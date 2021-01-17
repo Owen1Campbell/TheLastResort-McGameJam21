@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
 
     public GameObject player;
     public GameObject boss;
+    public Sprite missfortune;
 
     public Queue<string> sentences;
 
@@ -24,19 +25,53 @@ public class BossManager : MonoBehaviour
 
     private Color originalColor;
 
-    public AudioSource music;
+    public AudioSource introMusic;
+    public AudioSource bossMusic;
 
-    public void EnableDialogue()
+    public GameObject exitButton;
+
+    public void Awake()
     {
         characterName = "Jules";
-        bossName = "LadyLuck";
+
+        if (BoonManager.Instance.chosen >= 0) {
+            bossName = "MissFortune";
+        } else
+        {
+            bossName = "LadyLuck";
+        }
 
         nameBox = dialogueInterface.transform.GetChild(3).gameObject;
         
         dialogueInterface.SetActive(true);
         StartCoroutine("fadeElement");
+        introMusic.Play();
 
         //ReadDialogue("Introduction");                       
+    }
+
+    public void EnableDialogue(string name)
+    {
+        characterName = "Jules";
+
+        if (BoonManager.Instance.chosen < 0)
+        {
+            bossName = "MissFortune";
+        }
+        else
+        {
+            bossName = "LadyLuck";
+        }
+
+        nameBox = dialogueInterface.transform.GetChild(3).gameObject;
+
+        dialogueInterface.SetActive(true);
+        StartCoroutine(blackScreen(name));
+
+        
+
+        introMusic.Stop();
+        bossMusic.Stop();
     }
 
     // Start is called before the first frame update
@@ -135,6 +170,15 @@ public class BossManager : MonoBehaviour
             {
                 dialogueInterface.transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
             }
+            else if (nameText.text == "Casino")
+            {
+                nameBox.SetActive(false);
+                dialogueInterface.transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+            }
+            else if (nameText.text == "End")
+            {
+                callGameOver();
+            }
             // stop coroutines to prevent overlap of two letter typers when clicking through too fast
 
 
@@ -151,19 +195,33 @@ public class BossManager : MonoBehaviour
         }
     }
 
+
+    public void callGameOver()
+    {
+        dialogueInterface.SetActive(false);
+        exitButton.SetActive(true);
+    }
+
     public void DisableDialogue()
     {
         AudioListener.pause = false;
         dialogueInterface.transform.GetChild(0).GetComponent<Image>().color = originalColor;
+
+        dialogueInterface.transform.GetChild(1).GetChild(1).gameObject.SetActive(false);
+        dialogueInterface.transform.GetChild(1).GetChild(2).gameObject.SetActive(false);
+        dialogueInterface.transform.GetChild(1).GetChild(4).gameObject.SetActive(false);
+
         dialogueInterface.SetActive(false);
 
         player.SetActive(true);
         if (bossName == "MissFortune")
         {
-
+            boss.GetComponent<SpriteRenderer>().sprite = missfortune;
         }
         boss.SetActive(true);
 
+        introMusic.Stop();
+        bossMusic.Play();
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -198,5 +256,38 @@ public class BossManager : MonoBehaviour
             ReadDialogue("LadyLuck"); 
         }
 
+
+    }
+
+    public IEnumerator blackScreen(string name)
+    {
+        var tempColor = element.GetComponent<Image>().color;
+        originalColor = tempColor;
+        while (element.GetComponent<Image>().color.a < 1f)
+        {
+            tempColor = new Color(tempColor.r, tempColor.g, tempColor.b, tempColor.a + (Time.deltaTime / 1.0f));
+            element.GetComponent<Image>().color = tempColor;
+            yield return null;
+        }
+
+        if (name == "Siren of Fortune")
+        {
+            dialogueInterface.transform.GetChild(1).GetChild(4).gameObject.SetActive(true);
+            ReadDialogue("Ending");
+        }
+        else if (name == "Player")
+        {
+            if (BoonManager.Instance.chosen >= 0)
+            {
+                dialogueInterface.transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
+                ReadDialogue("MFLoss");
+            }
+            else
+            {
+
+                dialogueInterface.transform.GetChild(1).GetChild(2).gameObject.SetActive(true);
+                ReadDialogue("LLLoss");
+            }
+        }
     }
 }

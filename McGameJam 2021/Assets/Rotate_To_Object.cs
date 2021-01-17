@@ -15,11 +15,13 @@ public class Rotate_To_Object : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (this != null) { 
         Vector2 direction = new Vector2(
             focalObject.transform.position.x - transform.position.x,
             focalObject.transform.position.y - transform.position.y
         );
 
         transform.up = -direction;
+        }
     }
 }
