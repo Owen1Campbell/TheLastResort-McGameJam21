@@ -204,4 +204,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a99e3769a85d5f44b9adaf756c4d1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focalObject: {fileID: 0}
+  focalObject: {fileID: 3179925319787338756, guid: 535604361c5929345866ce8906318194,
+    type: 3}
