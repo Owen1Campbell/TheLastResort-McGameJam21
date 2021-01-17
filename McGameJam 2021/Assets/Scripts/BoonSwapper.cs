@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoonSwapper : MonoBehaviour
 {
     private Entity_Fundamental player;
+    public Sprite sunglasses, groucho;
 
     void Awake()
     {
@@ -63,33 +64,27 @@ public class BoonSwapper : MonoBehaviour
         {
             case "movement speed":
                 player.movementMultiplier = (float)boon.modifier;
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.movementMultiplier);
                 break;
             case "attack damage":
                 player.damageMultiplier = (float)boon.modifier;
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.damageMultiplier);
-                break;
-            case "damage resistance":
-
                 break;
             case "max health":
                 player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
-                if (boon.luck)
-                {
-                    int healthMod = player.maximumHealth - 30;
-                    player.currentHealth += healthMod;
-                }
-                if (player.currentHealth > player.maximumHealth)
-                {
-                    player.currentHealth = player.maximumHealth;
-                }
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.maximumHealth);
+                player.currentHealth = player.maximumHealth;
                 break;
             case "soundtrack":
 
                 break;
             case "glasses":
-
+                // 1 is sunglasses, 2 is nose glasses
+                if (boon.modifier == 1)
+                {
+                    GetComponent<SpriteRenderer>().sprite = sunglasses;
+                }
+                else if (boon.modifier == 2)
+                {
+                    GetComponent<SpriteRenderer>().sprite = groucho;
+                }
                 break;
         }
     }

@@ -34,7 +34,7 @@ public class BossManager : MonoBehaviour
     {
         characterName = "Jules";
 
-        if (BoonManager.Instance.chosen >= 0) {
+        if (BoonManager.Instance.chosen < 0) {
             bossName = "MissFortune";
         } else
         {
@@ -277,7 +277,7 @@ public class BossManager : MonoBehaviour
         }
         else if (name == "Player")
         {
-            if (BoonManager.Instance.chosen >= 0)
+            if (BoonManager.Instance.chosen < 0)
             {
                 dialogueInterface.transform.GetChild(1).GetChild(1).gameObject.SetActive(true);
                 ReadDialogue("MFLoss");

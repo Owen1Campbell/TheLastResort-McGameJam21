@@ -54,20 +54,9 @@ public class BoonReader : MonoBehaviour
             case "attack damage":
                 player.damageMultiplier = (float)boon.modifier;
                 break;
-            case "damage resistance":
-
-                break;
             case "max health":
                 player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
-                if (boon.luck)
-                {
-                    int healthMod = player.maximumHealth - 30;
-                    player.currentHealth += healthMod;
-                }
-                if (player.currentHealth > player.maximumHealth)
-                {
-                    player.currentHealth = player.maximumHealth;
-                }
+                player.currentHealth = player.maximumHealth;
                 break;
             case "soundtrack":
 

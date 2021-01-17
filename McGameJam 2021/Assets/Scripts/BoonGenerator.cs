@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BoonGenerator : MonoBehaviour
 {
@@ -31,7 +32,6 @@ public class BoonGenerator : MonoBehaviour
     {
         Boon boon = new Boon();
         int type = randm.Next(1, 6);
-        Debug.Log(type);
         if (BoonManager.Instance.musicChanged)
         {
             while (type == 4)
@@ -80,7 +80,6 @@ public class BoonGenerator : MonoBehaviour
                 else
                 {
                     boon.modifier = 1 - boon.modifier;
-                    Debug.Log(boon.modifier);
                     plainTextMod = (int)((1 - boon.modifier) * 100) + "%";
                 }
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
@@ -106,7 +105,6 @@ public class BoonGenerator : MonoBehaviour
                 else
                 {
                     boon.modifier = 1 - boon.modifier;
-                    Debug.Log(boon.modifier);
                     plainTextMod = (int)((1 - boon.modifier) * 100) + "%";
                 }
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
@@ -132,7 +130,6 @@ public class BoonGenerator : MonoBehaviour
                 else
                 {
                     boon.modifier = 1 - boon.modifier;
-                    Debug.Log(boon.modifier);
                     plainTextMod = (int)((1 - boon.modifier) * 100) + "%";
                 }
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
@@ -174,6 +171,7 @@ public class BoonGenerator : MonoBehaviour
     public void posButton()
     {
         StashAndGrab(posBoon);
+        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
         panel.transform.GetChild(1).gameObject.SetActive(false);
         posBonus = panel.transform.GetChild(0).GetChild(3).gameObject.GetComponent<Text>();
         posBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos-1].message;
@@ -184,6 +182,7 @@ public class BoonGenerator : MonoBehaviour
     public void negButton()
     {
         StashAndGrab(negBoon);
+        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
         panel.transform.GetChild(0).gameObject.SetActive(false);
         negBonus = panel.transform.GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
         negBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos - 1].message;
@@ -212,8 +211,6 @@ public class BoonGenerator : MonoBehaviour
         BoonManager.Instance.boonListPos++;
 
         BoonManager.Instance.hasBoons = true;
-        Debug.Log("checking hasBoons");
-        Debug.Log(BoonManager.Instance.hasBoons);
     }
 
     private IEnumerator movePosButt()
