@@ -10,6 +10,7 @@ public class ChipScript : MonoBehaviour
     {
         if (player.CompareTag("Player"))
         {
+            GetComponent<AudioSource>().Play();
             panel.SetActive(true);
             gameObject.SetActive(false);
         }

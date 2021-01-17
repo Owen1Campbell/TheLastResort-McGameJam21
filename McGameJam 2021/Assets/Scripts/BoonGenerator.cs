@@ -32,18 +32,11 @@ public class BoonGenerator : MonoBehaviour
     {
         Boon boon = new Boon();
         int type = randm.Next(1, 6);
-        if (BoonManager.Instance.musicChanged)
+        if (BoonManager.Instance.glassesChanged)
         {
             while (type == 4)
             {
-                type = randm.Next(1, 6);
-            }
-        }
-        if (BoonManager.Instance.glassesChanged)
-        {
-            while (type == 5)
-            {
-                type = randm.Next(1, 6);
+                type = randm.Next(1, 5);
             }
         }
         string incdec, plainTextMod;
@@ -135,21 +128,7 @@ public class BoonGenerator : MonoBehaviour
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
                 Debug.Log(boon.message);
                 break;
-            case 4: // soundtrack
-                boon.effect = "soundtrack";
-                if (posneg)
-                {
-                    boon.message = "Soundtrack gets bangin";
-                    boon.modifier = 1;
-                }
-                else
-                {
-                    boon.message = "Soundtrack sucks now";
-                    boon.modifier = 2;
-                }
-                Debug.Log(boon.message);
-                break;
-            case 5: // glasses
+            case 4: // glasses
                 boon.effect = "glasses";
                 if (posneg)
                 {

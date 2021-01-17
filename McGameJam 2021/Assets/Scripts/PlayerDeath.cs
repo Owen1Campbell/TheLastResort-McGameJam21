@@ -8,6 +8,10 @@ public class PlayerDeath : MonoBehaviour
 
     public void OnDisable()
     {
-        endScreen.SetActive(true);
+        if (this.GetComponent<Entity_Fundamental>().currentHealth == 0)
+        {
+            endScreen.SetActive(true);
+        }
+        
     }
 }
