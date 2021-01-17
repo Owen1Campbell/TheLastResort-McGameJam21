@@ -54,9 +54,9 @@ public class Projectile : MonoBehaviour
             Debug.Log("Hit!  Entity hit had " + otherEntity.currentHealth + " health!");
             otherEntity.currentHealth = Math.Max(0, otherEntity.currentHealth - (int) (baseDamage * damageMultiplier));
             Debug.Log("Now entity has " + otherEntity.currentHealth + " health!");
-
-            SelfDestruct();
         }
+
+        SelfDestruct();
     }
 
     // To be called after a particular amount of time, if needed.
