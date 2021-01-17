@@ -13,22 +13,26 @@ public class ButtonNav : MonoBehaviour
     public IntroductionManager intromanager;
     public AudioSource music;
 
+    public AudioSource chip;
     public void StartGame()
     {
         //Debug.Log("DEBUG: Introduction scene not done yet.");
         intromanager.EnableDialogue();
-        music.Play();
+        chip.Play();
+        music.PlayDelayed(chip.clip.length);
         //SceneManager.LoadScene("Hub");
     }
 
     public void ShowCredits()
     {
+        chip.Play();
         StartCoroutine("fadeElement");
         credits.SetActive(true);
     }
 
     public void CloseCredits()
     {
+        chip.Play();
         element.GetComponent<Image>().color = originalColor;
         credits.SetActive(false);
     }

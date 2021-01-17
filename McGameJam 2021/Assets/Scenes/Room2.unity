@@ -3216,6 +3216,11 @@ PrefabInstance:
       propertyPath: focalObject
       value: 
       objectReference: {fileID: 1903996259}
+    - target: {fileID: 7290577101958582216, guid: 8a41118d4c5d61d43b506fb20b32ee75,
+        type: 3}
+      propertyPath: killed
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a41118d4c5d61d43b506fb20b32ee75, type: 3}
 --- !u!1001 &1977218194
