@@ -172,6 +172,9 @@ public class IntroductionManager : MonoBehaviour
     {
         AudioListener.pause = false;
         dialogueInterface.transform.GetChild(0).GetComponent<Image>().color = originalColor;
+
+        dialogueInterface.transform.GetChild(1).gameObject.SetActive(false);
+
         dialogueInterface.SetActive(false);
         
     }

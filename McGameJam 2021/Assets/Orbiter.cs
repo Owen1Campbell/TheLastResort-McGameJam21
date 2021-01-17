@@ -22,16 +22,21 @@ public class Orbiter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.RotateAround(axisObject.transform.position, Vector3.forward, degreesPerSecond * rotationMultiplier * Time.deltaTime);
+        if (this != null)
+        {
+            transform.RotateAround(axisObject.transform.position, Vector3.forward, degreesPerSecond * rotationMultiplier * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(rotationMultiplier == 1)
-        {
-            rotationMultiplier = -1;
-        } else {
-            rotationMultiplier = 1;
+        if (this != null) { 
+            if (rotationMultiplier == 1)
+            {
+                rotationMultiplier = -1;
+            } else {
+                rotationMultiplier = 1;
+            }
         }
     }
 }

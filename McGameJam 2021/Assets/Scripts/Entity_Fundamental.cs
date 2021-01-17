@@ -28,7 +28,12 @@ public class Entity_Fundamental : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            Destroy(gameObject);
+            if (gameObject.tag == "Player")
+            {
+                gameObject.SetActive(false);
+            } else {
+                Destroy(gameObject);
+            }
         }
     }
 }
