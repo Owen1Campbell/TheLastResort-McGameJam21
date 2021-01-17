@@ -177,6 +177,7 @@ public class BoonGenerator : MonoBehaviour
         panel.transform.GetChild(1).gameObject.SetActive(false);
         posBonus = panel.transform.GetChild(0).GetChild(3).gameObject.GetComponent<Text>();
         posBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos-1].message;
+        BoonManager.Instance.chosen++;
         StartCoroutine(movePosButt());
     }
 
@@ -186,6 +187,7 @@ public class BoonGenerator : MonoBehaviour
         panel.transform.GetChild(0).gameObject.SetActive(false);
         negBonus = panel.transform.GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
         negBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos - 1].message;
+        BoonManager.Instance.chosen--;
         StartCoroutine(moveNegButt());
     }
 
