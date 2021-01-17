@@ -20,7 +20,7 @@ public class Entity_Fundamental : MonoBehaviour
     // Initialization.
     void Start()
     {
-        // N/A.
+        //
     }
 
     // Once-per-frame.
@@ -32,6 +32,7 @@ public class Entity_Fundamental : MonoBehaviour
             {
                 gameObject.SetActive(false);
             } else {
+                Debug.Log("AUDIO?");
                 Destroy(gameObject);
             }
         }
