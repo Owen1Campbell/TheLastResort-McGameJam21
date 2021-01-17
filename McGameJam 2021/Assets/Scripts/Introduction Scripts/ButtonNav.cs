@@ -11,11 +11,13 @@ public class ButtonNav : MonoBehaviour
     private Color originalColor;
 
     public IntroductionManager intromanager;
+    public AudioSource music;
 
     public void StartGame()
     {
         //Debug.Log("DEBUG: Introduction scene not done yet.");
         intromanager.EnableDialogue();
+        music.Play();
         //SceneManager.LoadScene("Hub");
     }
 
