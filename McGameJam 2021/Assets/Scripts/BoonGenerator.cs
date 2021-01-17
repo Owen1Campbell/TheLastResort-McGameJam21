@@ -177,6 +177,7 @@ public class BoonGenerator : MonoBehaviour
         panel.transform.GetChild(1).gameObject.SetActive(false);
         posBonus = panel.transform.GetChild(0).GetChild(3).gameObject.GetComponent<Text>();
         posBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos-1].message;
+        BoonManager.Instance.chosen++;
         StartCoroutine(movePosButt());
     }
 
@@ -186,6 +187,7 @@ public class BoonGenerator : MonoBehaviour
         panel.transform.GetChild(0).gameObject.SetActive(false);
         negBonus = panel.transform.GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
         negBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos - 1].message;
+        BoonManager.Instance.chosen--;
         StartCoroutine(moveNegButt());
     }
 
@@ -210,16 +212,16 @@ public class BoonGenerator : MonoBehaviour
         BoonManager.Instance.boonListPos++;
 
         BoonManager.Instance.hasBoons = true;
+        Debug.Log("checking hasBoons");
+        Debug.Log(BoonManager.Instance.hasBoons);
     }
 
     private IEnumerator movePosButt()
     {
         Transform butto = panel.transform.GetChild(0);
-        Debug.Log(butto.position.x);
         while (butto.position.x < 500)
         {
             butto.position += new Vector3(300 * Time.deltaTime, 0, 0);
-            Debug.Log(butto.position.x);
             yield return null;
         }
         yield return new WaitForSeconds(2);
@@ -231,11 +233,9 @@ public class BoonGenerator : MonoBehaviour
     private IEnumerator moveNegButt()
     {
         Transform butto = panel.transform.GetChild(1);
-        Debug.Log(butto.position.x);
         while (butto.position.x > 500)
         {
             butto.position -= new Vector3(300 * Time.deltaTime, 0, 0);
-            Debug.Log(butto.position.x);
             yield return null;
         }
         yield return new WaitForSeconds(2);

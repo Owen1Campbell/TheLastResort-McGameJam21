@@ -43,16 +43,16 @@ public class BoonSwapper : MonoBehaviour
                     boon.modifier = 1;
                 break;
             case "movement speed":
-                boon.modifier = SwapMod(boon.modifier);
-                player.movementMultiplier = (float)boon.modifier;
-                break;
             case "attack damage":
-                boon.modifier = SwapMod(boon.modifier);
-                player.damageMultiplier = (float)boon.modifier;
-                break;
             case "max health":
-                boon.modifier = SwapMod(boon.modifier);
-                player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
+                if (boon.luck)  // positive to negative 
+                {
+                    boon.modifier = 2 - boon.modifier;
+                }
+                else            // negative to positive
+                {
+                    boon.modifier = (1 - boon.modifier) + 1;
+                }
                 break;
         }
     }
