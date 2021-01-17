@@ -9,6 +9,7 @@ public class BoonReader : MonoBehaviour
     void Awake()
     {
         GetBoons();
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -21,13 +22,19 @@ public class BoonReader : MonoBehaviour
         // assign player to allow modification of values
         player = GetComponent<Entity_Fundamental>();
 
+        Debug.Log("getting boons");
+        Debug.Log(BoonManager.Instance.hasBoons);
+
         // apply each boon
+        for (int i = 0; i <= BoonManager.Instance.boonListPos; i++)
+        {
+            Debug.Log("reading boons[" + i + "]");
+            ApplyBoon(BoonManager.Instance.boonList[i]);
+        }
+
         if (BoonManager.Instance.hasBoons)
         {
-            for (int i = 0; i <= BoonManager.Instance.boonListPos; i++)
-            {
-                ApplyBoon(BoonManager.Instance.boonList[i]);
-            }
+            Debug.Log("in if; has boons");
         }
     }
 
@@ -37,15 +44,18 @@ public class BoonReader : MonoBehaviour
         {
             case "movement speed":
                 player.movementMultiplier = (float)boon.modifier;
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.movementMultiplier);
                 break;
             case "attack damage":
                 player.damageMultiplier = (float)boon.modifier;
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.damageMultiplier);
                 break;
             case "damage resistance":
 
                 break;
             case "max health":
                 player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.maximumHealth);
                 break;
             case "soundtrack":
 

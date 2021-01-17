@@ -10,11 +10,9 @@ public class LoadLevel: MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D player)
     {
-        Debug.Log("hit");
         if (player.CompareTag("Player"))
         {
             // if player enters, loads scene "room"
-            Debug.Log("hit in if");
             SceneManager.LoadScene(room);
         }
     }

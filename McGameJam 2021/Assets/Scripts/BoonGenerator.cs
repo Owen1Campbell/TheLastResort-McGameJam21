@@ -212,16 +212,16 @@ public class BoonGenerator : MonoBehaviour
         BoonManager.Instance.boonListPos++;
 
         BoonManager.Instance.hasBoons = true;
+        Debug.Log("checking hasBoons");
+        Debug.Log(BoonManager.Instance.hasBoons);
     }
 
     private IEnumerator movePosButt()
     {
         Transform butto = panel.transform.GetChild(0);
-        Debug.Log(butto.position.x);
         while (butto.position.x < 500)
         {
             butto.position += new Vector3(300 * Time.deltaTime, 0, 0);
-            Debug.Log(butto.position.x);
             yield return null;
         }
         yield return new WaitForSeconds(2);
@@ -233,11 +233,9 @@ public class BoonGenerator : MonoBehaviour
     private IEnumerator moveNegButt()
     {
         Transform butto = panel.transform.GetChild(1);
-        Debug.Log(butto.position.x);
         while (butto.position.x > 500)
         {
             butto.position -= new Vector3(300 * Time.deltaTime, 0, 0);
-            Debug.Log(butto.position.x);
             yield return null;
         }
         yield return new WaitForSeconds(2);
