@@ -1,0 +1,37 @@
+Out on the far reaches of the universe, there lies a place that exists outside time and space.
+;Casino;A place that was never was and yet is - the Last Resort.
+A place of wonder, the Last Resort is alive. The sultry glows and bright flashes of the lights engulf the establishment in an endless star-lit twilight.
+The constant pings and beeps cascading from every machine create a never-ending cacophony. 
+A place of desire, its patrons mill around its underbelly, ants in a hill. It is a beast of its own. 
+Living. 
+Breathing. 
+Hungering.
+:???:Damn.
+A slot machine rolls. Cherry, lemon, grapes. The machine beeps sadly.
+:???:Dammit!
+;Figure;A figure leans on the machine next to the man, twirling a few tokens in her hand.
+:Jules:Come on now. I’ve gotta be close, I’ve gotta. 
+The machine rolls again. 
+Orange. Bell. Bell. 
+The figure next to Jules leans over.
+:Figure: No luck, huh?
+:Jules:No luck. Never any luck. Not in this damn place.
+:Figure:How ironic. Perhaps Lady Luck's just not on your side this spin?
+The figure leaves Jules be, not that the swearing, white-knuckled patron was paying much attention to her to begin with. 
+;DisableFigure;Seconds bleed into minutes, which bleed into hours, and the coins in Jules’ palm dwindle to a measly penny.
+:Jules:Come on, just for one spin. All I need is one.
+Jules shakes the coin with eyes clenched shut and a muttered prayer. The penny disappears into the slot, the lever clicks, and the wheels spin and spin and spin. 
+Cherry. Cherry. 
+Jules watches on, wide-eyed as the final wheel seems to spin for an eternity. Then, it clicks, stops. 
+Diamond.
+:Jules:DAMMIT! DAMMIT, DAMMIT, DAMMIT!
+;Stranger;Another stranger looks over, concerned.
+:Stranger:Hey there, are you okay?
+:Jules:I can never win, never!
+Jules kicks the machine.
+:Stranger:...
+:Jules:That’s it! That’s IT!
+Jules stands, eyes bulging, fists clenched, and temper flared.
+:Stranger:And where are you going? You could always try again, maybe Lady Luck'll favor you this time.
+:Jules:No...
+:Jules:This time, I’m going to find Lady Luck, and I’m going to punch her in the face.
