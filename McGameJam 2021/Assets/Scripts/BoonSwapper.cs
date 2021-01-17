@@ -35,6 +35,13 @@ public class BoonSwapper : MonoBehaviour
     {
         switch (boon.effect)
         {
+            case "soundtrack": // for these two: 1 is pos, 2 is neg
+            case "glasses":
+                if (boon.modifier == 1)
+                    boon.modifier = 2;
+                else
+                    boon.modifier = 1;
+                break;
             case "movement speed":
                 boon.modifier = SwapMod(boon.modifier);
                 player.movementMultiplier = (float)boon.modifier;
@@ -46,12 +53,6 @@ public class BoonSwapper : MonoBehaviour
             case "max health":
                 boon.modifier = SwapMod(boon.modifier);
                 player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
-                break;
-            case "soundtrack": // for these two: 1 is pos, 2 is neg
-
-                break;
-            case "glasses":
-
                 break;
         }
     }

@@ -138,10 +138,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   baseDamage: 10
-  maximumHealth: 100
+  maximumHealth: 30
   movementMultiplier: 1
   damageMultiplier: 1
-  currentHealth: 100
+  currentHealth: 30
 --- !u!114 &3179925319787338755
 MonoBehaviour:
   m_ObjectHideFlags: 0
