@@ -11,6 +11,11 @@ public class BoonReader : MonoBehaviour
         GetBoons();
         
     }
+
+    void OnEnable()
+    {
+        GetBoons();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,18 +28,17 @@ public class BoonReader : MonoBehaviour
         player = GetComponent<Entity_Fundamental>();
 
         Debug.Log("getting boons");
-        Debug.Log(BoonManager.Instance.hasBoons);
+        Debug.Log("boonListPos: " + BoonManager.Instance.boonListPos);
 
         // apply each boon
-        for (int i = 0; i <= BoonManager.Instance.boonListPos; i++)
-        {
-            Debug.Log("reading boons[" + i + "]");
-            ApplyBoon(BoonManager.Instance.boonList[i]);
-        }
-
         if (BoonManager.Instance.hasBoons)
         {
             Debug.Log("in if; has boons");
+            for (int i = 0; i <= BoonManager.Instance.boonListPos - 1; i++)
+            {
+                Debug.Log("reading boons[" + i + "]");
+                ApplyBoon(BoonManager.Instance.boonList[i]);
+            }
         }
     }
 
@@ -55,6 +59,15 @@ public class BoonReader : MonoBehaviour
                 break;
             case "max health":
                 player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
+                if (boon.luck)
+                {
+                    int healthMod = player.maximumHealth - 30;
+                    player.currentHealth += healthMod;
+                }
+                if (player.currentHealth > player.maximumHealth)
+                {
+                    player.currentHealth = player.maximumHealth;
+                }
                 Debug.Log("boon/player" + (float)boon.modifier + " " + player.maximumHealth);
                 break;
             case "soundtrack":

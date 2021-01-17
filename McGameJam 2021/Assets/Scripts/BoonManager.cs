@@ -16,7 +16,6 @@ public class BoonManager : MonoBehaviour
                 GameObject boons = new GameObject("BoonManager");
                 boons.AddComponent<BoonManager>();
             }
-
             return _instance;
         }
     }
@@ -32,5 +31,6 @@ public class BoonManager : MonoBehaviour
     void Awake()
     {
         _instance = this;
+        DontDestroyOnLoad(this);
     }
 }

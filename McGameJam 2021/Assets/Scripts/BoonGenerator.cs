@@ -13,7 +13,7 @@ public class BoonGenerator : MonoBehaviour
 
     private Text posText, negText, posBonus, negBonus;
 
-    public GameObject exitFence, exitGate;
+    public GameObject exitFence, exitGate, player;
 
     void OnEnable()
     {
@@ -228,6 +228,8 @@ public class BoonGenerator : MonoBehaviour
         panel.SetActive(false);
         exitFence.SetActive(false);
         exitGate.SetActive(true);
+        player.SetActive(false);
+        player.SetActive(true);
     }
 
     private IEnumerator moveNegButt()
@@ -242,5 +244,7 @@ public class BoonGenerator : MonoBehaviour
         panel.SetActive(false);
         exitFence.SetActive(false);
         exitGate.SetActive(true);
+        player.SetActive(false);
+        player.SetActive(true);
     }
 }
