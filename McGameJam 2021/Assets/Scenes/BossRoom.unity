@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c14ef40a0adc54f9fc756c848df860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency_in_seconds: 0.3
+  frequency_in_seconds: 0.5
   projectilePrefab: {fileID: 4614789543531102418, guid: b12c4bfaf9f0a4347aa1428e9a1e02b0,
     type: 3}
 --- !u!114 &752680302
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  baseDamage: 5
+  baseDamage: 3
   maximumHealth: 100
   movementMultiplier: 1
   damageMultiplier: 1
@@ -734,7 +734,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752680300}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 4.42, y: -0.55, z: 0}
+  m_LocalPosition: {x: 4.42, y: -0.55, z: -2}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
