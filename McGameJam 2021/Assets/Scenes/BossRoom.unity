@@ -504,7 +504,7 @@ PrefabInstance:
     - target: {fileID: 3179925319787338767, guid: 535604361c5929345866ce8906318194,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.22
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 3179925319787338767, guid: 535604361c5929345866ce8906318194,
         type: 3}
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c14ef40a0adc54f9fc756c848df860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frequency_in_seconds: 0.3
+  frequency_in_seconds: 0.5
   projectilePrefab: {fileID: 4614789543531102418, guid: b12c4bfaf9f0a4347aa1428e9a1e02b0,
     type: 3}
 --- !u!114 &752680302
@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  baseDamage: 5
+  baseDamage: 3
   maximumHealth: 100
   movementMultiplier: 1
   damageMultiplier: 1
@@ -652,9 +652,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00000005248088, y: 0.4402416}
   serializedVersion: 2
-  m_Radius: 0.08
+  m_Radius: 0.98834544
 --- !u!50 &752680307
 Rigidbody2D:
   serializedVersion: 4
@@ -715,8 +715,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.8584906, g: 0.11743506, b: 0.7400681, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5e7448316abe63a4ba69b790a16c9d8a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -733,13 +733,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752680300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.42, y: -0.55, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
+  m_LocalPosition: {x: 4.42, y: -0.55, z: -2}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
 --- !u!1 &797208625
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class User_Controllable : MonoBehaviour
             {
                 // Take stats from the entity base if available.
                 GameObject projectile = Instantiate<GameObject>(projectilePrefab);
-                projectile.transform.position = transform.position - (transform.up * 0.5f);
+                projectile.transform.position = (transform.position - transform.up * 0.75f);
                 projectile.transform.rotation = transform.rotation;
 
                 // Apply direction to it.
