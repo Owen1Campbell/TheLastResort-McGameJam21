@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 1168727756163122595}
   - component: {fileID: 1168727756163122594}
   - component: {fileID: 7290577101958582216}
+  - component: {fileID: 7961645480605235856}
   - component: {fileID: 5577621351167856998}
   - component: {fileID: 3491907143369022978}
+  - component: {fileID: 1209241943205146810}
   m_Layer: 0
   m_Name: Card_0
   m_TagString: Untagged
@@ -128,6 +130,21 @@ MonoBehaviour:
   movementMultiplier: 1
   damageMultiplier: 1
   currentHealth: 30
+--- !u!114 &7961645480605235856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168727756163122597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c14ef40a0adc54f9fc756c848df860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frequency_in_seconds: 2
+  projectilePrefab: {fileID: 2013394258959787252, guid: 131a45ddc62ec5a47945b385d3e8e4d1,
+    type: 3}
 --- !u!50 &5577621351167856998
 Rigidbody2D:
   serializedVersion: 4
@@ -162,7 +179,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00787884, y: 0.012049675}
+  m_Offset: {x: -0.00787878, y: 0.006952524}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -173,5 +190,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.886002, y: 4.00014}
+  m_Size: {x: 2.886002, y: 3.2356176}
   m_EdgeRadius: 0
+--- !u!114 &1209241943205146810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168727756163122597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a99e3769a85d5f44b9adaf756c4d1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focalObject: {fileID: 0}

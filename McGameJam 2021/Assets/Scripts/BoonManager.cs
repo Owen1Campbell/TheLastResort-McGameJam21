@@ -26,6 +26,8 @@ public class BoonManager : MonoBehaviour
     public int chosen;                      // add for positives, subtract for negatives. if it ends positive, lady luck, negative miss fortune
                                             // if necessary, coin flip at 0
     public bool hasBoons;                   // just in case
+    public bool glassesChanged;
+    public bool musicChanged;               // if music or glasses change, other random boons wont change them back
 
     void Awake()
     {

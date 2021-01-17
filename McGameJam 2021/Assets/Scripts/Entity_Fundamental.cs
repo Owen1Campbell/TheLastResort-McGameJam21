@@ -26,6 +26,9 @@ public class Entity_Fundamental : MonoBehaviour
     // Once-per-frame.
     void Update()
     {
-        // N/A.
+        if (currentHealth == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
