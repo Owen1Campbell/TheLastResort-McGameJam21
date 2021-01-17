@@ -26,12 +26,12 @@ public class BoonSwapper : MonoBehaviour
         {
             for (int i = 0; i <= BoonManager.Instance.boonListPos; i++)
             {
-                ApplyBoon(BoonManager.Instance.boonList[i]);
+                SwapBoon(BoonManager.Instance.boonList[i]);
             }
         }
     }
 
-    void ApplyBoon(Boon boon)
+    void SwapBoon(Boon boon)
     {
         switch (boon.effect)
         {
@@ -55,13 +55,42 @@ public class BoonSwapper : MonoBehaviour
                 }
                 break;
         }
+        ApplyBoon(boon);
     }
-
-    double SwapMod(double mod)
+    void ApplyBoon(Boon boon)
     {
+        switch (boon.effect)
+        {
+            case "movement speed":
+                player.movementMultiplier = (float)boon.modifier;
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.movementMultiplier);
+                break;
+            case "attack damage":
+                player.damageMultiplier = (float)boon.modifier;
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.damageMultiplier);
+                break;
+            case "damage resistance":
 
-        return mod;
+                break;
+            case "max health":
+                player.maximumHealth = (int)(player.maximumHealth * boon.modifier);
+                if (boon.luck)
+                {
+                    int healthMod = player.maximumHealth - 30;
+                    player.currentHealth += healthMod;
+                }
+                if (player.currentHealth > player.maximumHealth)
+                {
+                    player.currentHealth = player.maximumHealth;
+                }
+                Debug.Log("boon/player" + (float)boon.modifier + " " + player.maximumHealth);
+                break;
+            case "soundtrack":
+
+                break;
+            case "glasses":
+
+                break;
+        }
     }
-
-
 }

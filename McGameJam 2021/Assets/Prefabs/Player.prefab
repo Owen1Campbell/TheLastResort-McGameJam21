@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370ffd3a3e8b8f843843917392356d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sunglasses: {fileID: 21300000, guid: 7e0e8f4ea3196384099e5a353162e13d, type: 3}
+  groucho: {fileID: 21300000, guid: f1216d45b8038aa4aaa38582dca9d554, type: 3}

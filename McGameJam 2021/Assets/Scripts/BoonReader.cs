@@ -5,6 +5,8 @@ using UnityEngine;
 public class BoonReader : MonoBehaviour
 {
     private Entity_Fundamental player;
+    //private Sprite jules;
+    public Sprite sunglasses, groucho;
 
     void Awake()
     {
@@ -26,14 +28,14 @@ public class BoonReader : MonoBehaviour
     {
         // assign player to allow modification of values
         player = GetComponent<Entity_Fundamental>();
+        //jules = GetComponent<SpriteRenderer>().sprite;
 
         Debug.Log("getting boons");
-        Debug.Log("boonListPos: " + BoonManager.Instance.boonListPos);
+        Debug.Log("number of boons: " + BoonManager.Instance.boonListPos);
 
         // apply each boon
         if (BoonManager.Instance.hasBoons)
         {
-            Debug.Log("in if; has boons");
             for (int i = 0; i <= BoonManager.Instance.boonListPos - 1; i++)
             {
                 Debug.Log("reading boons[" + i + "]");
@@ -48,11 +50,9 @@ public class BoonReader : MonoBehaviour
         {
             case "movement speed":
                 player.movementMultiplier = (float)boon.modifier;
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.movementMultiplier);
                 break;
             case "attack damage":
                 player.damageMultiplier = (float)boon.modifier;
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.damageMultiplier);
                 break;
             case "damage resistance":
 
@@ -68,13 +68,20 @@ public class BoonReader : MonoBehaviour
                 {
                     player.currentHealth = player.maximumHealth;
                 }
-                Debug.Log("boon/player" + (float)boon.modifier + " " + player.maximumHealth);
                 break;
             case "soundtrack":
 
                 break;
             case "glasses":
-
+                // 1 is sunglasses, 2 is nose glasses
+                if (boon.modifier == 1)
+                {
+                    GetComponent<SpriteRenderer>().sprite = sunglasses;
+                }
+                else if (boon.modifier == 2)
+                {
+                    GetComponent<SpriteRenderer>().sprite = groucho;
+                }
                 break;
         }
     }
