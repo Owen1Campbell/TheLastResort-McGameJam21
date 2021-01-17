@@ -142,6 +142,16 @@ public class IntroductionManager : MonoBehaviour
             {
                 dialogueInterface.transform.GetChild(1).GetChild(2).gameObject.SetActive(true);
             }
+            else if (nameText.text == "???")
+            {
+                nameBox.SetActive(true);
+                dialogueInterface.transform.GetChild(1).GetChild(3).gameObject.SetActive(true);
+            }
+            else if (nameText.text == "Jules")
+            {
+                nameBox.SetActive(true);
+                dialogueInterface.transform.GetChild(1).GetChild(4).gameObject.SetActive(true);
+            }
             // stop coroutines to prevent overlap of two letter typers when clicking through too fast
 
 
