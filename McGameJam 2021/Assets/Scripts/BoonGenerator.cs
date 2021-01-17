@@ -31,7 +31,7 @@ public class BoonGenerator : MonoBehaviour
     Boon Generate(bool posneg)
     {
         Boon boon = new Boon();
-        int type = randm.Next(1, 6);
+        int type = randm.Next(1, 5);
         if (BoonManager.Instance.glassesChanged)
         {
             while (type == 4)
