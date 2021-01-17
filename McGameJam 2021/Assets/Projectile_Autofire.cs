@@ -47,6 +47,9 @@ public class Projectile_Autofire : MonoBehaviour
             // Apply damage and duration.
             projectileStats.baseDamage = entityBase.baseDamage;
             projectileStats.damageMultiplier = entityBase.damageMultiplier;
+
+            // Apply name.
+            projectileStats.origin = gameObject.name;
         }
     }
 }

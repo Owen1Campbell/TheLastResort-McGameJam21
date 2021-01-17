@@ -14,6 +14,8 @@ public class Projectile : MonoBehaviour
     public float projectileDuration;
     public Vector2 moveDirection;
 
+    public string origin;
+
     // Projectile Mods
     public float movementMultiplier;
     public float damageMultiplier;
@@ -47,15 +49,14 @@ public class Projectile : MonoBehaviour
     {
         // Inflict damage to the recipient if they can feel pain.
         Entity_Fundamental otherEntity = other.gameObject.GetComponent<Entity_Fundamental>();
-        if (otherEntity != null)
+        if (otherEntity != null && other.gameObject.name != origin)
         {
             Debug.Log("Hit!  Entity hit had " + otherEntity.currentHealth + " health!");
             otherEntity.currentHealth = Math.Max(0, otherEntity.currentHealth - (int) (baseDamage * damageMultiplier));
             Debug.Log("Now entity has " + otherEntity.currentHealth + " health!");
-        }
 
-        // Self destruct after the projectile hits anything.
-        SelfDestruct();
+            SelfDestruct();
+        }
     }
 
     // To be called after a particular amount of time, if needed.
