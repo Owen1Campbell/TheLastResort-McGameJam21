@@ -11,7 +11,9 @@ public class BoonGenerator : MonoBehaviour
 
     private GameObject panel;
 
-    private Text posText, negText;
+    private Text posText, negText, posBonus, negBonus;
+
+    public GameObject exitFence, exitGate;
 
     void OnEnable()
     {
@@ -28,8 +30,22 @@ public class BoonGenerator : MonoBehaviour
     Boon Generate(bool posneg)
     {
         Boon boon = new Boon();
-        int type = randm.Next(1, 7);
+        int type = randm.Next(1, 6);
         Debug.Log(type);
+        if (BoonManager.Instance.musicChanged)
+        {
+            while (type == 4)
+            {
+                type = randm.Next(1, 6);
+            }
+        }
+        if (BoonManager.Instance.glassesChanged)
+        {
+            while (type == 5)
+            {
+                type = randm.Next(1, 6);
+            }
+        }
         string incdec, plainTextMod;
         boon.luck = posneg;
 
@@ -65,7 +81,7 @@ public class BoonGenerator : MonoBehaviour
                 {
                     boon.modifier = 1 - boon.modifier;
                     Debug.Log(boon.modifier);
-                    plainTextMod = (int)((boon.modifier + 1) * 100) + "%";
+                    plainTextMod = (int)((1 - boon.modifier) * 100) + "%";
                 }
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
                 Debug.Log(boon.message);
@@ -91,38 +107,12 @@ public class BoonGenerator : MonoBehaviour
                 {
                     boon.modifier = 1 - boon.modifier;
                     Debug.Log(boon.modifier);
-                    plainTextMod = (int)((boon.modifier + 1) * 100) + "%";
+                    plainTextMod = (int)((1 - boon.modifier) * 100) + "%";
                 }
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
                 Debug.Log(boon.message);
                 break;
-            case 3: // dmg resist
-                boon.effect = "damage resistance";
-                boon.modifier = randm.NextDouble();
-                boon.modifier = System.Math.Truncate(boon.modifier * 100) / 100;
-                if (boon.modifier > 0.5)
-                {
-                    boon.modifier = boon.modifier - 0.5;
-                }
-                if (boon.modifier < 0.1)
-                {
-                    boon.modifier = boon.modifier + 0.1;
-                }
-                if (posneg)
-                {
-                    boon.modifier += 1;
-                    plainTextMod = (int)((boon.modifier - 1) * 100) + "%";
-                }
-                else
-                {
-                    boon.modifier = 1 - boon.modifier;
-                    Debug.Log(boon.modifier);
-                    plainTextMod = (int)((boon.modifier + 1) * 100) + "%";
-                }
-                boon.message = incdec + boon.effect + " by " + plainTextMod;
-                Debug.Log(boon.message);
-                break;
-            case 4: // max health
+            case 3: // max health
                 boon.effect = "max health";
                 boon.modifier = randm.NextDouble();
                 boon.modifier = System.Math.Truncate(boon.modifier * 100) / 100;
@@ -148,7 +138,7 @@ public class BoonGenerator : MonoBehaviour
                 boon.message = incdec + boon.effect + " by " + plainTextMod;
                 Debug.Log(boon.message);
                 break;
-            case 5: // soundtrack
+            case 4: // soundtrack
                 boon.effect = "soundtrack";
                 if (posneg)
                 {
@@ -162,7 +152,7 @@ public class BoonGenerator : MonoBehaviour
                 }
                 Debug.Log(boon.message);
                 break;
-            case 6: // glasses
+            case 5: // glasses
                 boon.effect = "glasses";
                 if (posneg)
                 {
@@ -184,11 +174,19 @@ public class BoonGenerator : MonoBehaviour
     public void posButton()
     {
         StashAndGrab(posBoon);
+        panel.transform.GetChild(1).gameObject.SetActive(false);
+        posBonus = panel.transform.GetChild(0).GetChild(3).gameObject.GetComponent<Text>();
+        posBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos-1].message;
+        StartCoroutine(movePosButt());
     }
 
     public void negButton()
     {
         StashAndGrab(negBoon);
+        panel.transform.GetChild(0).gameObject.SetActive(false);
+        negBonus = panel.transform.GetChild(1).GetChild(3).gameObject.GetComponent<Text>();
+        negBonus.text = BoonManager.Instance.boonList[BoonManager.Instance.boonListPos - 1].message;
+        StartCoroutine(moveNegButt());
     }
 
     private void StashAndGrab(Boon buttonBoon)
@@ -196,11 +194,53 @@ public class BoonGenerator : MonoBehaviour
         BoonManager.Instance.boonList[BoonManager.Instance.boonListPos] = buttonBoon;
         BoonManager.Instance.boonListPos++;
 
+        if (buttonBoon.effect == "soundtrack")
+        {
+            BoonManager.Instance.musicChanged = true;
+        }
+
+        if (buttonBoon.effect == "glasses")
+        {
+            BoonManager.Instance.glassesChanged = true;
+        }
+
         Boon newBoon = Generate(!buttonBoon.luck);
 
         BoonManager.Instance.boonList[BoonManager.Instance.boonListPos] = newBoon;
         BoonManager.Instance.boonListPos++;
 
         BoonManager.Instance.hasBoons = true;
+    }
+
+    private IEnumerator movePosButt()
+    {
+        Transform butto = panel.transform.GetChild(0);
+        Debug.Log(butto.position.x);
+        while (butto.position.x < 500)
+        {
+            butto.position += new Vector3(300 * Time.deltaTime, 0, 0);
+            Debug.Log(butto.position.x);
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
+        exitFence.SetActive(false);
+        exitGate.SetActive(true);
+    }
+
+    private IEnumerator moveNegButt()
+    {
+        Transform butto = panel.transform.GetChild(1);
+        Debug.Log(butto.position.x);
+        while (butto.position.x > 500)
+        {
+            butto.position -= new Vector3(300 * Time.deltaTime, 0, 0);
+            Debug.Log(butto.position.x);
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
+        panel.SetActive(false);
+        exitFence.SetActive(false);
+        exitGate.SetActive(true);
     }
 }
