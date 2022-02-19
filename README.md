@@ -6,9 +6,9 @@ The theme for the jam was "Unintended Consequences."
 
 ## ***Game Description***
 
-At  a casino at the end of the universe - the Last Resort - a man who's had a spell of bad luck decides to take fate into his own hands.
+At a casino at the end of the universe - the Last Resort - a man who's had a spell of bad luck decides to take fate into his own hands.
 
-Looking for short, narrative-driven adventure? Play *The Last Resort*, a topdown beat ‘em up game where you make your own luck.
+Looking for a short, narrative-driven adventure? Play *The Last Resort*, a topdown beat ‘em up game where you make your own luck.
 
 ## ***How to Play***
 
