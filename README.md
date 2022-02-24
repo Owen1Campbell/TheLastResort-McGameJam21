@@ -14,7 +14,7 @@ Looking for a short, narrative-driven adventure? Play *The Last Resort*, a topdo
 
 Check out the game on [itch.io](https://ethearian.itch.io/the-last-resort), or download the ``The Last Resort.zip``, unzip, and run the game executable. Enjoy!
 
-![logo](https://github.com/cpilip/mcgamejam-2021/blob/main/Art/Logo.png)
+![logo](https://github.com/cpilip/mcgamejam-2021/blob/main/McGameJam%202021/Logo.png)
 
 ## ***The Cache Cats***
 
